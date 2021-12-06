@@ -19,7 +19,7 @@ V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경
 다양한 모듈, 파일시스템, HTTP 등 빌트인(built-in, 내장) API 제공
 
 Node.js는 비동기 I/O를 지원, 단일 스레드 이벤트 루프 기반으로 동작,
-SPA(Single Page Application)에 적합
+SPA(Single Page Application)에 적합 - 데이터를 실시간으로 처리함.
 
 7. SPA 프레임워크 
 Angular, React, Vue.js, Svelte 
@@ -106,7 +106,7 @@ const, let 지역변수
 
 undefined는 원시타입의 값.
 
-선언 단계 : 변수 이름 할달
+선언 단계 : 변수 이름 할당
 초기화 단계 : 메모리 공간을 확보하고 undefined를 할당해 초기화
 
 
@@ -172,6 +172,7 @@ console.log(`my name is ${name}`);
 21. 동적 타이핑
 변수는 선언이 아닌 할당에 의해 타입이 결정되고, 
 재할당에 타입은 동적으로 변할 수 있다.
+
 
 
 22. 연산자

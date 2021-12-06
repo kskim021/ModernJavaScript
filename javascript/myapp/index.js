@@ -24,3 +24,27 @@ console.log(t);
 const name = '관석';
 console.log(`my name is ${name}`);
 console.log('my name is ' + name);
+
+// 변수에 할당
+const foo = function() {
+   console.log("foobar");
+}
+// 변수를 사용해 호출
+foo();
+
+// 인자로 전달 
+function sayHello() {
+   return "Hello, ";
+}
+function greeting(helloMessage, name) {
+  console.log(helloMessage() + name);
+}
+// `sayHello`를 `greeting` 함수에 인자로 전달
+greeting(sayHello, " JavaScript!");
+
+// 함수를 반환
+function sayHello() {
+   return function() {
+      console.log("Hello!");
+   }
+}
