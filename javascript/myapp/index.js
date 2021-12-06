@@ -1,4 +1,4 @@
-const arr = [1,2,3];
+const arr = [1, 2, 3];
 
 // arr.forEach(console.log)
 
@@ -9,10 +9,8 @@ const arr = [1,2,3];
 // var score;
 // console.log(score);
 
-
 // var score = 80;  // 변수 선언
 // score = 90; //  재할당
-
 
 // const  // 재할당 불가
 
@@ -20,21 +18,20 @@ let t = 80;
 t = 90;
 console.log(t);
 
-
-const name = '관석';
+const name = "관석";
 console.log(`my name is ${name}`);
-console.log('my name is ' + name);
+console.log("my name is " + name);
 
 // 변수에 할당
-const foo = function() {
-   console.log("foobar");
-}
+const foo = function () {
+  console.log("foobar");
+};
 // 변수를 사용해 호출
 foo();
 
-// 인자로 전달 
+// 인자로 전달
 function sayHello() {
-   return "Hello, ";
+  return "Hello, ";
 }
 function greeting(helloMessage, name) {
   console.log(helloMessage() + name);
@@ -44,7 +41,26 @@ greeting(sayHello, " JavaScript!");
 
 // 함수를 반환
 function sayHello() {
-   return function() {
-      console.log("Hello!");
-   }
+  return function () {
+    console.log("Hello!");
+  };
 }
+
+// 레이블
+outer: for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+    if (i + j === 3) break outer;
+      console.log(`inner [${i}, ${j}]`);
+  }
+}
+
+
+
+console.log('10' + 2)
+console.log('10' * 5)
+
+
+if(!false)  console.log(false)
+if(!undefined) console.log(false)
+if(!null) console.log(false)
+
