@@ -236,3 +236,18 @@ ex) var str = x + '';
 || (논리합) - 좌항에서 우항으로 평가한다. 
 &&(논리곱) - 좌항에서 우항으로 평가한다.
 * 논리 연산의 결과를 반영하지 않고 그대로 반환하는 것
+
+null또는 undefined가 아닌지 확인하고 프로퍼티 참조할 때
+var elem = null;
+var value = elem.value; //error
+-> var value = elem && elem.value;  //null
+
+함수 매개변수에 기본값 설정 
+function getStringLength(str) {
+   str = str || '';
+   return str.length;
+}
+
+29. null 병합 연산자 (변수에 기본값을 설정할 때 유용)
+var foo = null ?? 'default'; 
+console.log(foo); //default
