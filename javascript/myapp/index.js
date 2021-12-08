@@ -64,3 +64,36 @@ if(!false)  console.log(false)
 if(!undefined) console.log(false)
 if(!null) console.log(false)
 
+
+
+var person = {
+  firstName: 'Lee',
+  'first-test': 'test'
+};
+
+
+console.log('===1>' + person.firstName);
+console.log('===2>' + person["first-test"]);
+console.log('===3> ' + person.test);
+
+
+var score = 80;
+var copy = score;
+
+console.log(score);
+console.log(copy);
+
+score = 100;
+
+console.log(score);
+console.log(copy);
+
+
+
+
+console.log(add(1,2));
+
+
+function add (a, b) {
+  return a+b
+}
