@@ -50,32 +50,25 @@ function sayHello() {
 outer: for (var i = 0; i < 3; i++) {
   for (var j = 0; j < 3; j++) {
     if (i + j === 3) break outer;
-      console.log(`inner [${i}, ${j}]`);
+    console.log(`inner [${i}, ${j}]`);
   }
 }
 
+console.log("10" + 2);
+console.log("10" * 5);
 
-
-console.log('10' + 2)
-console.log('10' * 5)
-
-
-if(!false)  console.log(false)
-if(!undefined) console.log(false)
-if(!null) console.log(false)
-
-
+if (!false) console.log(false);
+if (!undefined) console.log(false);
+if (!null) console.log(false);
 
 var person = {
-  firstName: 'Lee',
-  'first-test': 'test'
+  firstName: "Lee",
+  "first-test": "test",
 };
 
-
-console.log('===1>' + person.firstName);
-console.log('===2>' + person["first-test"]);
-console.log('===3> ' + person.test);
-
+console.log("===1>" + person.firstName);
+console.log("===2>" + person["first-test"]);
+console.log("===3> " + person.test);
 
 var score = 80;
 var copy = score;
@@ -88,12 +81,48 @@ score = 100;
 console.log(score);
 console.log(copy);
 
+// console.log(add(1,2));
 
-
-
-console.log(add(1,2));
-
-
-function add (a, b) {
-  return a+b
+function add(a, b) {
+  return a + b;
 }
+
+console.log("=======================");
+
+let x = 1;
+
+if (true) {
+  let x = 10;
+}
+
+// console.log(x)
+
+// console.log(foo);
+
+// let foo;
+
+// console.log(foo);
+// foo = 1;
+
+// console.log(foo);
+
+const person1 = {
+  firstName: "Lee",
+  lastName : "um",
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  set fullName(name) {
+    [this.firstName, this.lastName] = name.split(' ');
+  }
+};
+
+person1.fullName= 'Test Study';
+console.log(person1);
+
+
+// person1.age = 32;
+
+//console.log(Object.getOwnPropertyDescriptors(person1));
+
+
