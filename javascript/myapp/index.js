@@ -108,21 +108,79 @@ if (true) {
 
 const person1 = {
   firstName: "Lee",
-  lastName : "um",
+  lastName: "um",
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   },
   set fullName(name) {
-    [this.firstName, this.lastName] = name.split(' ');
-  }
+    [this.firstName, this.lastName] = name.split(" ");
+  },
 };
 
-person1.fullName= 'Test Study';
+console.log(Object.isExtensible(person1));
+
+Object.preventExtensions(person1);
+
+console.log(Object.isExtensible(person1));
+
+person1.fullName = "Test Study";
+// person1.firstName = 'wewwww';
 console.log(person1);
 
-
 // person1.age = 32;
-
 //console.log(Object.getOwnPropertyDescriptors(person1));
+
+const person2 = new Object(); // Object 생성자
+
+person2.name = "Kim";
+person2.sayBye = function () {
+  console.log("=======> " + this.name);
+};
+
+console.log(person2);
+person2.sayBye();
+
+function foo1() {
+  console.log(this);
+}
+
+foo1();
+
+const obj1 = { foo1 };
+
+obj1.foo1();
+
+const inst = new foo1(); // 생성자 함수
+
+
+// new.target
+function Circle1(params) {
+  if (!new.target) {
+    return new Circle1(params);
+  }
+  this.params = params;
+  this.getDiameter = function () {
+    return 2 * this.params;
+  };
+}
+
+const circle1 = Circle1(5);
+console.log(circle1.getDiameter());
+
+
+// 소코프 세이프 생성자 패턴
+function Circle(params) {
+  if (!(this instanceof Circle)) {
+    return new Circle(params);
+  }
+
+  this.params = params;
+  this.getDiameter = function () {
+    return 2 * this.params;
+  };
+}
+
+const circle = Circle(5);
+console.log(circle.getDiameter());
 
 
