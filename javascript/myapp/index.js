@@ -152,7 +152,6 @@ obj1.foo1();
 
 const inst = new foo1(); // 생성자 함수
 
-
 // new.target
 function Circle1(params) {
   if (!new.target) {
@@ -166,7 +165,6 @@ function Circle1(params) {
 
 const circle1 = Circle1(5);
 console.log(circle1.getDiameter());
-
 
 // 소코프 세이프 생성자 패턴
 function Circle(params) {
@@ -183,12 +181,9 @@ function Circle(params) {
 const circle = Circle(5);
 console.log(circle.getDiameter());
 
-
-
-
 const person3 = {
-  name : 'Lee',
-  address : {city: 'Seoul'}
+  name: "Lee",
+  address: { city: "Seoul" },
 };
 
 // Object.freeze(person3);
@@ -203,15 +198,13 @@ console.log(Object.isSealed(person3));
 // console.log(Object.isExtensible(person3.address));
 console.log(Object.isSealed(person3.address));
 
-
-
 function deep(target) {
-  if(target && typeof target === 'object' && !Object.isFrozen(target)){
+  if (target && typeof target === "object" && !Object.isFrozen(target)) {
     Object.freeze(target);
-    Object.keys(target).forEach(key => deep(target[key]));
-  } else if(target && typeof target === 'object' && !Object.isSealed(target)){
+    Object.keys(target).forEach((key) => deep(target[key]));
+  } else if (target && typeof target === "object" && !Object.isSealed(target)) {
     Object.seal(target);
-    Object.keys(target).forEach(key => deep(target[key]));
+    Object.keys(target).forEach((key) => deep(target[key]));
   }
 
   return target;
@@ -225,15 +218,13 @@ console.log(Object.isFrozen(person3.address));
 console.log(Object.isSealed(person3));
 console.log(Object.isSealed(person3.address));
 
-
-
 //const Circle3 = (radius) => {this.radius = radius}; //  non-constructor 프로토타입 생성안됨.
 const Circle3 = function (radius) {
-  this.radius = radius
-}
+  this.radius = radius;
+};
 
-Circle3.prototype.getArea = function() {
-   return Math.PI * this.radius ** 2;
+Circle3.prototype.getArea = function () {
+  return Math.PI * this.radius ** 2;
 };
 
 const circle4 = new Circle3(10);
@@ -242,7 +233,37 @@ const circle5 = new Circle3(2);
 console.log(circle4.getArea());
 console.log(circle5.getArea());
 
+console.log(function () {}.hasOwnProperty("prototype")); // true
 
-console.log((function (){}).hasOwnProperty('prototype')); // true
+// obj 객체를 생성한 생성자 함수는 Object다.
+const obj4 = new Object();
+console.log(obj4.constructor == Object);
+
+//  add 함수 객체를 생성한 생성자 함수는 Function이다.
+const add4 = new Function("a", "b");
+console.log(add4.constructor == Function);
+
+//  생성자 함수
+function Person5(name) {
+  this.name = name;
+}
+
+const m1 = new Person5('Kim');
+console.log(m1.constructor == Person5)
+
+
+//  객체 리터럴
+const obj6 = {};
+console.log(obj6.constructor == Object)
+
+//  함수 리터럴
+const add5 = function(a,b) {return a+b;};
+console.log(add5.constructor == Function)
+
+//  배열 리터럴
+const arr2 = [1, 2, 3];
+
+//  정규 표현식 리터럴
+const regExp1 = /is/ig;
 
 
