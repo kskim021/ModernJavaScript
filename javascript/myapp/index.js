@@ -184,3 +184,65 @@ const circle = Circle(5);
 console.log(circle.getDiameter());
 
 
+
+
+const person3 = {
+  name : 'Lee',
+  address : {city: 'Seoul'}
+};
+
+// Object.freeze(person3);
+// Object.preventExtensions(person3);
+Object.seal(person3);
+
+//console.log(Object.isFrozen(person3));
+//console.log(Object.isExtensible(person3));
+console.log(Object.isSealed(person3));
+
+//console.log(Object.isFrozen(person3.address));
+// console.log(Object.isExtensible(person3.address));
+console.log(Object.isSealed(person3.address));
+
+
+
+function deep(target) {
+  if(target && typeof target === 'object' && !Object.isFrozen(target)){
+    Object.freeze(target);
+    Object.keys(target).forEach(key => deep(target[key]));
+  } else if(target && typeof target === 'object' && !Object.isSealed(target)){
+    Object.seal(target);
+    Object.keys(target).forEach(key => deep(target[key]));
+  }
+
+  return target;
+}
+
+deep(person3);
+
+console.log(Object.isFrozen(person3));
+console.log(Object.isFrozen(person3.address));
+
+console.log(Object.isSealed(person3));
+console.log(Object.isSealed(person3.address));
+
+
+
+//const Circle3 = (radius) => {this.radius = radius}; //  non-constructor 프로토타입 생성안됨.
+const Circle3 = function (radius) {
+  this.radius = radius
+}
+
+Circle3.prototype.getArea = function() {
+   return Math.PI * this.radius ** 2;
+};
+
+const circle4 = new Circle3(10);
+const circle5 = new Circle3(2);
+
+console.log(circle4.getArea());
+console.log(circle5.getArea());
+
+
+console.log((function (){}).hasOwnProperty('prototype')); // true
+
+
