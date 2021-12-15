@@ -248,22 +248,48 @@ function Person5(name) {
   this.name = name;
 }
 
-const m1 = new Person5('Kim');
-console.log(m1.constructor == Person5)
-
+const m1 = new Person5("Kim");
+console.log(m1.constructor == Person5);
 
 //  객체 리터럴
 const obj6 = {};
-console.log(obj6.constructor == Object)
+console.log(obj6.constructor == Object);
 
 //  함수 리터럴
-const add5 = function(a,b) {return a+b;};
-console.log(add5.constructor == Function)
+const add5 = function (a, b) {
+  return a + b;
+};
+console.log(add5.constructor == Function);
 
 //  배열 리터럴
 const arr2 = [1, 2, 3];
 
 //  정규 표현식 리터럴
-const regExp1 = /is/ig;
+const regExp1 = /is/gi;
+
+const Person6 = (function () {
+  //  생성자 함수
+  function Person6(name) {
+    this.name = name;
+  }
+
+  //  프로토타입 메서드
+  Person6.prototype.sayHello = function () {
+    console.log(`Hi My name is ${this.name}`);
+  };
+
+  //  생성자 함수를 반환
+  return Person6;
+})();
+
+const me = new Person6("Kim2");
+
+//  인스턴스 메서드 (오버라이딩)
+me.sayHello = function () {
+  console.log(`Hey My name is ${this.name}`);
+};
+
+//  인스턴스 메서드가 호출됨.
+me.sayHello();
 
 
