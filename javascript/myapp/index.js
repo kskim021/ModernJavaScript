@@ -292,4 +292,44 @@ me.sayHello = function () {
 //  인스턴스 메서드가 호출됨.
 me.sayHello();
 
+(function () {
+  "use strict";
+
+  function foo() {
+    console.log(this); //  undefined
+  }
+
+  foo();
+
+  function Foo() {
+    console.log(this); //  Foo
+  }
+
+  new Foo();
+})();
+
+(function (a) {
+  "use strict";
+
+  a = 2;
+
+  console.log(arguments);
+}(1));
+
+
+console.log(parseInt('F', 16));
+
+
+var foo11 = 1;
+console.log(foo11);
+
+
+eval('1 + 2;');
+
+eval('var tr = 10');
+console.log(tr);
+
+const o = eval('1 + 2');
+console.log(o);
+
 
