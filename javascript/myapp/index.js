@@ -314,22 +314,73 @@ me.sayHello();
   a = 2;
 
   console.log(arguments);
-}(1));
+})(1);
 
-
-console.log(parseInt('F', 16));
-
+console.log(parseInt("F", 16));
 
 var foo11 = 1;
 console.log(foo11);
 
+eval("1 + 2;");
 
-eval('1 + 2;');
-
-eval('var tr = 10');
+eval("var tr = 10");
 console.log(tr);
 
-const o = eval('1 + 2');
+const o = eval("1 + 2");
 console.log(o);
+
+function foo5() {
+  // 'use strict';
+
+  console.log("foo is this : ", this);
+
+  function boo5() {
+    console.log("boo is this : ", this);
+  }
+  boo5();
+}
+foo5();
+
+var value1 = 1;
+
+const obj = {
+  value1: 100,
+  foo() {
+    console.log("foo is this : ", this);
+    console.log("foo is this.value : ", this.value1); //  100
+
+    function bar() {
+      console.log("bar is this : ", this);
+      console.log("bar is this.value : ", this.value1); // 1  ?
+    }
+    bar();
+  },
+};
+
+obj.foo();
+
+const person9 = {
+  name: "Lee",
+  getName() {
+    return this.name;
+  },
+};
+
+console.log(person9.getName());
+
+function Circle6(radius) {
+  this.radius = radius;
+  this.getDiameter = function () {
+    return 2 * this.radius;
+  };
+}
+
+const circle7 = new Circle6(5);
+console.log(circle7.getDiameter())  //  10
+
+const circle8 = Circle6(15);
+//  Circle6 에는 반환문이 없어서 암묵적으로 undefined
+console.log(circle8); // undefined
+console.log(radius);  // 15
 
 
