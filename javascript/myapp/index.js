@@ -384,3 +384,20 @@ console.log(circle8); // undefined
 console.log(radius);  // 15
 
 
+
+var x1 = 1;
+const y = 2;
+
+function foo9(a) {
+  var x1 = 3;
+  const y = 4;
+
+  function bar9(b) {
+    const z = 5;
+    console.log(a + b + x1 + y + z)
+  }
+  
+  bar9(10);
+}
+
+foo9(20);
