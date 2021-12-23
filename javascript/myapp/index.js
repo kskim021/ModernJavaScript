@@ -376,14 +376,12 @@ function Circle6(radius) {
 }
 
 const circle7 = new Circle6(5);
-console.log(circle7.getDiameter())  //  10
+console.log(circle7.getDiameter()); //  10
 
 const circle8 = Circle6(15);
 //  Circle6 에는 반환문이 없어서 암묵적으로 undefined
 console.log(circle8); // undefined
-console.log(radius);  // 15
-
-
+console.log(radius); // 15
 
 var x1 = 1;
 const y = 2;
@@ -394,10 +392,82 @@ function foo9(a) {
 
   function bar9(b) {
     const z = 5;
-    console.log(a + b + x1 + y + z)
+    console.log(a + b + x1 + y + z);
   }
-  
+
   bar9(10);
 }
 
 foo9(20);
+
+const x2 = 1;
+
+function foo10() {
+  const x2 = 10;
+  bar10();
+}
+
+function bar10() {
+  console.log(x2);
+}
+
+foo10(); //1
+bar10(); //1
+
+const x3 = 1;
+
+function outer() {
+  const x3 = 10;
+  const inner = function () {
+    console.log(x3);
+  };
+  return inner;
+}
+
+const innerFunc = outer();
+innerFunc();
+
+
+//  클로저
+const increase = (function() {
+  let num = 0;
+
+  return function() {
+    return ++num;
+  };
+}());
+
+console.log(increase());
+console.log(increase());
+console.log(increase());
+
+
+
+// 함수형 클로저
+function makeCounter(predicate) {
+  let counter = 0;
+
+  //클로저를 반환
+  return function() {
+    counter = predicate(counter);
+    return counter;
+  }
+}
+
+function increase1(n) {
+  return ++n;
+}
+
+
+function decrease(n) {
+  return --n;
+}
+
+const increaser = makeCounter(increase1);
+console.log(increaser());
+console.log(increaser());
+
+
+const decreaser = makeCounter(decrease);
+console.log(decreaser());
+console.log(decreaser());
