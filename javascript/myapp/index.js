@@ -427,37 +427,33 @@ function outer() {
 const innerFunc = outer();
 innerFunc();
 
-
 //  클로저
-const increase = (function() {
+const increase = (function () {
   let num = 0;
 
-  return function() {
+  return function () {
     return ++num;
   };
-}());
+})();
 
 console.log(increase());
 console.log(increase());
 console.log(increase());
-
-
 
 // 함수형 클로저
 function makeCounter(predicate) {
   let counter = 0;
 
   //클로저를 반환
-  return function() {
+  return function () {
     counter = predicate(counter);
     return counter;
-  }
+  };
 }
 
 function increase1(n) {
   return ++n;
 }
-
 
 function decrease(n) {
   return --n;
@@ -467,7 +463,51 @@ const increaser = makeCounter(increase1);
 console.log(increaser());
 console.log(increaser());
 
-
 const decreaser = makeCounter(decrease);
 console.log(decreaser());
 console.log(decreaser());
+
+const Person10 = (function () {
+  let _age = 0; //private
+
+  function Person10(name, age) {
+    this.name = name; //public
+    _age = age;
+  }
+
+  Person10.prototype.sayHi = function () {
+    console.log(`hi ${this.name} : ${_age}`);
+  };
+
+  return Person10;
+})();
+
+const me1 = new Person10("Lee", 20);
+me1.sayHi();
+console.log(me1.name); //  Lee
+console.log(me1._age); //  undefined
+
+//  클로저
+var funcs = [];
+for (var i = 0; i < 3; i++) {
+  funcs[i] = (function (id) {
+    return function () {
+      return id;
+    };
+  })(i);
+}
+
+for (var j = 0; j < funcs.length; j++) {
+  console.log(funcs[j]());
+}
+
+const funcs1 = [];
+for (let i = 0; i < 3; i++) {
+  funcs1[i] = function () {
+    return i;
+  };
+}
+
+for (let i = 0; i < funcs1.length; i++) {
+  console.log(funcs1[i]());
+}
