@@ -511,3 +511,49 @@ for (let i = 0; i < 3; i++) {
 for (let i = 0; i < funcs1.length; i++) {
   console.log(funcs1[i]());
 }
+
+//  생성자 함수와 프로토타입을 통해 객체지향언어의 상속을 구현할 수 있다.
+var Person11 = (function () {
+  function Person11(name) {
+    this.name = name;
+
+    Person11.prototype.sayHi1 = function () {
+      console.log("Hi " + this.name);
+    };
+  }
+  return Person11;
+})();
+
+var me3 = new Person11("lee");
+me3.sayHi1();
+
+
+// 클래스 선언문
+class Person12 {
+  //생성자
+  constructor(name) {
+    //인스턴스 생성 및 초기화
+    this.name = name;
+  }
+
+  //프로토타입 메서드
+  sayHi2() {
+    console.log('hi ' + this.name);
+  }
+  //정적 메서드
+  static sayHello1() {
+    console.log('hello!');
+  }
+}
+
+//  인스턴스 생성
+const me4 = new Person12('Kim');
+//  인스턴스의 프로퍼티 참조
+console.log(me4.name);
+//  프로토타입 메서드 호출
+me4.sayHi2();
+//  정적 메서드 호출
+Person12.sayHello1();
+
+
+
