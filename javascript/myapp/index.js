@@ -527,7 +527,6 @@ var Person11 = (function () {
 var me3 = new Person11("lee");
 me3.sayHi1();
 
-
 // 클래스 선언문
 class Person12 {
   //생성자
@@ -538,16 +537,16 @@ class Person12 {
 
   //프로토타입 메서드
   sayHi2() {
-    console.log('hi ' + this.name);
+    console.log("hi " + this.name);
   }
   //정적 메서드
   static sayHello1() {
-    console.log('hello!');
+    console.log("hello!");
   }
 }
 
 //  인스턴스 생성
-const me4 = new Person12('Kim');
+const me4 = new Person12("Kim");
 //  인스턴스의 프로퍼티 참조
 console.log(me4.name);
 //  프로토타입 메서드 호출
@@ -555,5 +554,64 @@ me4.sayHi2();
 //  정적 메서드 호출
 Person12.sayHello1();
 
+function Person13(name) {
+  this.name = name;
+
+  const sayHi3 = () => console.log(this.name);
+
+  // 프로토타입 메서드
+  Person13.prototype.sayHi3 = function () {
+    console.log(this.name);
+  };
+}
+
+const me5 = new Person13("Kim1");
+me5.sayHi3();
+
+class Person14 {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  // 프로토타입 메서드
+  sayHi4 () {
+      console.log('====> ' + this.name);
+  }
+}
+
+const me6 = new Person14('kim2');
+me6.sayHi4();
+
+
+function Person15 (name) {
+  this.name = name;
+}
+
+//정적 메서드
+Person15.sayHi5 = function () {
+  console.log(this.name);
+}
+
+Person15.sayHi5();
+
+
+class Person16 {
+  //  생성자
+  constructor(name) {
+    //  인스턴스 생성 및 초기화
+    this.name = name;
+  }
+
+  //  정적 메서드
+  static sayHi6() {
+    console.log('Hi ! ' + this.name);
+  }
+}
+
+Person16.sayHi6();
+
+
+const me7 = new Person16('L333');
+me7.sayHi6();
 
 
