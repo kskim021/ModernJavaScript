@@ -612,6 +612,65 @@ Person16.sayHi6();
 
 
 const me7 = new Person16('L333');
-me7.sayHi6();
+//me7.sayHi6();
+
+
+
+class Person17 {
+  //  1. 암묵적으로 인스턴스가 생성된고 this에 바인딩된다.
+  constructor(name){
+    //  2. this에 바인딩되어 있는 인스턴스를 초기화한다.
+    this.name = name; //  name 프로퍼티는 public 이다.
+    //  3. 완성된 인스턴스가 바인딩된 this가 암묵적으로 반환한다.
+  }
+}
+
+const me8 = new Person17('Kimmm');
+console.log('========> '+ me8);
+
+
+const Person18 = {
+  firstName: 'teetet',
+  lastName: 'TRE',
+  //  접근자 프로퍼티
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`
+  },
+  set fullName(name){
+    [this.firstName, this.lastName] = name.split(' ');
+  }
+};
+
+console.log(`${Person18.firstName} ${Person18.lastName}`);
+
+
+Person18.fullName = 'Kwan Kim';
+console.log(Person18.fullName);
+
+console.log(Object.getOwnPropertyDescriptor(Person18, 'fullName'));
+
+
+class Person19 {
+  constructor(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  //  접근 프로퍼티
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`
+  }
+
+  set fullName(name){
+    [this.firstName, this.lastName] = name.split(' ');
+  }
+}
+
+const me9 = new Person19('Seok', 'Lee');
+console.log(`${me9.firstName} ${me9.lastName}`);
+
+me9.fullName = '123123 312321312';
+console.log(me9);
+
 
 
